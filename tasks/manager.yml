@@ -33,7 +33,9 @@
   args:
     chdir: /home/vagrant/kafka-manager/
 - shell: "sudo mv kafka-manager/target/universal/kafka-manager-1.3.0.7.zip /opt"
-- shell: "sudo unzip /opt/kafka-manager-1.3.0.7.zip"
+- shell: "sudo unzip /opt/kafka-manager-1.3.0.7.zip -d /opt/"
 
 - name: Start kafka-manager
-  shell: "sudo /opt/kafka-manager-1.3.0.7/bin/kafka-manager  -Dkafka-manager.zkhosts='127.0.0.1:2181'" 
+  command: "sudo ./kafka-manager  -Dkafka-manager.zkhosts='127.0.0.1:2181' &" 
+  args:
+    chdir: /opt/kafka-manager-1.3.0.7/bin/
