@@ -1,3 +1,8 @@
+##Note:
+
+This repo is a fork of jpbarto/kafka, it adds the kafka-manager web UI.
+https://github.com/yahoo/kafka-manager
+
 # Kafka
 
 Master: [![Build Status](https://travis-ci.org/jpbarto/kafka.svg?branch=master)](https://travis-ci.org/jpbarto/kafka)  
