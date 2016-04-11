@@ -1,0 +1,35 @@
+---
+
+- name: Install git
+  become: yes
+  apt:
+    name: git
+
+- name: Install unzip
+  become: yes
+  apt:
+    name: unzip
+
+- name: Install sbt
+- shell: "echo 'deb https://dl.bintray.com/sbt/debian /' | sudo tee -a /etc/apt/sources.list.d/sbt.list"
+- shell: "sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823"
+- shell: "sudo apt-get update"
+- shell: "sudo apt-get install sbt"
+
+- name: Install Java 8
+- shell: "sudo add-apt-repository ppa:webupd8team/java"
+- shell: "sudo apt-get update"
+- shell: "sudo apt-get install oracle-java8-installer"
+
+- name: Clone The Repo
+  shell: "git clone https://github.com/yahoo/kafka-manager.git"
+
+- name: Build kafka-manager
+- shell: "cd kafka-manager"
+- shell: "sudo ./sbt clean dist"
+- shell: "sudo mv ./target/universal/kafka-manager-1.3.0.7.zip /opt"
+- shell: "sudo cd /opt"
+- shell: "sudo unzip kafka-manager-1.3.0.7.zip"
+
+- name: Start kafka-manager
+  shell: "sudo /opt/kafka-manager--1.3.0.7/bin/kafka-manager  -Dkafka-manager.zkhosts='127.0.0.1:2181'" 
