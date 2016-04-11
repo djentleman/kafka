@@ -43,8 +43,8 @@ To install run `ansible-galaxy install ansible-city.kafka` or add this to your
 `roles.yml`
 
 ```YAML
-- name: jpbarto.kafka
-  version: v1.0.4
+- name: djentleman.kafka
+  version: v1.0.5
 ```
 
 and run `ansible-galaxy install -p ./roles -r roles.yml`
